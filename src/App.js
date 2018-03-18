@@ -20,19 +20,47 @@ class App extends Component {
       data: []
     };
   }
-  //trying to get the localhost to connect to react...
+  //calling back end API
+  //map through the data array, grab its data
+  //then, set the state object's array "data" to the eventsData
+  //array from the API source.
   componentDidMount() {
     //the browser says GET https://localhost:3000/ net::ERR_SSL_PROTOCOL_ERROR
     //But it works when I use other random API urls.
     //Yes, CORS is installed in the back end.
     //Doesn't work with or without www
-    axios.get("https://www.localhost:3000").then(res => {
-      const events = res.data.children.map(event => event.data);
-      this.setState({ events });
-    });
+    //trying with a random api
+    let eventsData = [];
+    axios
+      .get("https://facebook.github.io/react-native/movies.json")
+      .then(res => {
+        console.log(res);
+        // res.data.children.map(event => event.data);
+        // eventsData.push(event);
+      })
+      .then(() => {
+        this.setState({
+          data: eventsData
+        });
+      });
   }
 
+  //map through this state's data array and render the specific
+  //data indices as li in an unordered list below.
   render() {
+    let events = this.state.data.map(data => {
+      return (
+        <div>
+          <ul>
+            <li>{this.state.data.name}</li>
+            <li>{this.state.data.date}</li>
+            <li>{this.state.data.time}</li>
+            <li>{this.state.data.location}</li>
+            <li>{this.state.data.description}</li>
+          </ul>
+        </div>
+      );
+    });
     return (
       <div className="App">
         <nav>
@@ -75,5 +103,5 @@ class App extends Component {
 
 //I don't know what this is but it has something to do with
 //getting my virtual dom to use App...?
-ReactDOM.render(<App data="reactjs" />, document.getElementById("root"));
+// ReactDOM.render(<App data="reactjs" />, document.getElementById("root"));
 export default App;
