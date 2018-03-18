@@ -7,6 +7,7 @@ import {
   Switch
 } from "react-router-dom";
 import axios from "axios";
+import Edit from "./Edit";
 
 //Creating a component with state to handle back end data
 class Events extends Component {
@@ -17,7 +18,8 @@ class Events extends Component {
       date: "DATE",
       time: "TIME",
       location: "LOCATION",
-      description: "DESCRIBEDY SCRIBE SCRIPTY DIBE, JIBBIDY JABBIDY JIBE TRIBE!"
+      description:
+        "DESCRIBEDY SCRIBE SCRIPTY DIBE, JIBBIDY JABBIDY JIBEDY TRIBE!"
     };
   }
 
@@ -32,6 +34,13 @@ class Events extends Component {
   render() {
     return (
       <div>
+        <Route
+          path="/edit"
+          render={props => {
+            console.log(props);
+            return <Edit />;
+          }}
+        />
         <h1>Events!</h1>
         <div className="event">
           <ul className="event_info">
@@ -41,6 +50,10 @@ class Events extends Component {
             <li>{this.state.location}</li>
             <li>{this.state.description}</li>
           </ul>
+          <button>Delete</button>
+          <Link to="/edit">
+            <button>Edit</button>
+          </Link>
         </div>
       </div>
     );

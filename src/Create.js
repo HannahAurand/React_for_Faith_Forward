@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 
+//eventually, will need to set state object to "String"
 class Create extends Component {
   constructor() {
     super();
@@ -13,16 +14,17 @@ class Create extends Component {
     };
   }
 
+  //figure out how to post the data from the user input to the db
   render() {
     return (
       <div className="create">
         <form>
-          <input type="text" name="title" value="title" />
-          <input type="text" name="date" value="date" />
-          <input type="text" name="time" value="time" />
-          <input type="text" name="location" value="location" />
-          <input type="text" name="description" value="description" />
-          <input type="submit" value="submit" value="Add Event!" />
+          <input type="text" name="title" />
+          <input type="text" name="date" />
+          <input type="text" name="time" />
+          <input type="text" name="location" />
+          <input type="text" name="description" />
+          <input type="submit" value="submit" />
         </form>
       </div>
     );
