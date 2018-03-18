@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 
+//Creating a component with state to handle back end data
 class Events extends Component {
   constructor() {
     super();
@@ -20,12 +21,14 @@ class Events extends Component {
     };
   }
 
+  //checking that the back end can be accessed and rendered in the console
   componentDidMount() {
     axios.get("http://localhost:3000").then(res => {
-      console.log();
+      console.log(res);
     });
   }
 
+  //rendering a component that consists of the state from the component state constructor
   render() {
     return (
       <div>
